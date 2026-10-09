@@ -857,6 +857,209 @@
      transform: translateY(0);
  }
 
+ .shopping-cart {
+     max-width: 1100px;
+     margin: 2rem auto 4rem;
+     padding: 0 1.25rem;
+ }
+
+ .cart-heading {
+     display: flex;
+     align-items: baseline;
+     justify-content: space-between;
+     gap: 1rem;
+     margin-bottom: 1.25rem;
+ }
+
+ .cart-heading h2 {
+     color: var(--coffee-dark);
+     font: 700 clamp(1.75rem, 4vw, 2.4rem) Georgia, 'Times New Roman', serif;
+ }
+
+ .cart-heading p,
+ .cart-item-details p,
+ .cart-item-count {
+     color: var(--muted);
+ }
+
+ .cart-layout {
+     display: grid;
+     grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
+     align-items: start;
+     gap: 1.5rem;
+ }
+
+ .cart-items {
+     display: grid;
+     gap: 1rem;
+ }
+
+ .cart-item {
+     display: grid;
+     grid-template-columns: 92px minmax(0, 1fr) auto auto auto;
+     align-items: center;
+     gap: 1rem;
+     padding: 1rem;
+     background: #fff;
+     border: 1px solid rgba(89, 61, 49, 0.1);
+     border-radius: 16px;
+     box-shadow: 0 10px 24px rgba(44, 27, 18, 0.07);
+ }
+
+ article.cart-item:hover {
+     transform: none;
+ }
+
+ .cart-item > div {
+     padding: 0;
+     flex: initial;
+ }
+
+ .cart-item img {
+     width: 92px;
+     height: 82px;
+     object-fit: contain;
+     padding: 0.35rem;
+     background: var(--cream);
+     border-radius: 10px;
+ }
+
+ .cart-item-details h3,
+ .cart-summary h3,
+ .cart-empty h3 {
+     color: var(--coffee-dark);
+ }
+
+ .cart-item-details p {
+     margin-top: 0.2rem;
+ }
+
+ .quantity-control {
+     display: inline-flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 0.75rem;
+ }
+
+ .quantity-button {
+     display: grid;
+     place-items: center;
+     width: 36px;
+     height: 36px;
+     border: 1px solid rgba(92, 59, 42, 0.22);
+     border-radius: 50%;
+     background: var(--cream);
+     color: var(--coffee-dark);
+     font-size: 1.25rem;
+     cursor: pointer;
+ }
+
+ .quantity-button:hover,
+ .quantity-button:focus-visible {
+     background: var(--coffee-dark);
+     color: #fff;
+ }
+
+ .cart-line-total {
+     min-width: 5.5rem;
+     color: var(--coffee-dark);
+     font-weight: 700;
+     text-align: right;
+ }
+
+ .cart-remove {
+     border: 0;
+     background: transparent;
+     color: #8a3b2e;
+     text-decoration: underline;
+     cursor: pointer;
+ }
+
+ .cart-summary {
+     padding: 1.25rem;
+     background: #fff;
+     border: 1px solid rgba(89, 61, 49, 0.1);
+     border-radius: 16px;
+     box-shadow: 0 10px 24px rgba(44, 27, 18, 0.07);
+ }
+
+ .cart-totals {
+     display: grid;
+     gap: 0.35rem;
+     margin: 1rem 0;
+     padding: 0.9rem 0;
+     border-top: 1px solid rgba(89, 61, 49, 0.14);
+     border-bottom: 1px solid rgba(89, 61, 49, 0.14);
+     color: var(--coffee-dark);
+     font-size: 1.1rem;
+     font-weight: 700;
+ }
+
+ .cart-item-count {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .cart-empty {
+     padding: 2rem;
+     background: #fff;
+     border: 1px dashed rgba(92, 59, 42, 0.3);
+     border-radius: 16px;
+     text-align: center;
+ }
+
+ .cart-empty p {
+     margin: 0.5rem 0 1rem;
+     color: var(--muted);
+ }
+
+ .cart-empty a {
+     display: inline-block;
+     padding: 0.65rem 1rem;
+     border-radius: 999px;
+     background: var(--coffee-dark);
+     color: #fff;
+     text-decoration: none;
+ }
+
+ @media (max-width: 760px) {
+     .cart-layout {
+         grid-template-columns: 1fr;
+     }
+
+     .cart-item {
+         grid-template-columns: 72px minmax(0, 1fr);
+         grid-template-areas:
+             "image details"
+             "image quantity"
+             "total remove";
+         gap: 0.75rem;
+     }
+
+     .cart-item img {
+         grid-area: image;
+         width: 72px;
+         height: 72px;
+     }
+
+     .cart-item-details {
+         grid-area: details;
+     }
+
+     .cart-item .quantity-control {
+         grid-area: quantity;
+     }
+
+     .cart-line-total {
+         grid-area: total;
+         text-align: left;
+     }
+
+     .cart-remove {
+         grid-area: remove;
+         justify-self: end;
+     }
+ }
 
 
  /*Subscription form styling*/
