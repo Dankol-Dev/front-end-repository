@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>BB COFFEE SHOP</title>
 </head>
 
@@ -13,21 +15,23 @@
     <header id="universal-box">
 
         <div class="universal-container">
-
-
-            <div class="universal-logo">
-                <img src="images/beanLogo.png" alt="Bean Boutique Logo">
-
+            <div class="universal-header-row">
+                <div class="universal-logo">
+                    <img src="images/beanLogo.png" alt="Bean Boutique Logo">
+                </div>
+                <nav>
+                    <a href="Home.html">Home</a>
+                    <a href="BrewingEquipment.html">Equipments</a>
+                    <a href="CoffeeSelection.html">Selection</a>
+                    <a href="Shopping.html">Shopping</a>
+                    <a href="Offers.html">Offers</a>
+                </nav>
+                <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-
-            <nav>
-                <a href="Home.html">Home</a>                
-                <a href="BrewingEquipment.html">Equipments</a>
-                <a href="CoffeeSelection.html">Selection</a>
-                <a href="Shopping.html">Shopping</a>
-                <a href="Offers.html">Offers</a>
-            </nav>
-
             <h1>BEAN BOUTIQUE <br>COFFEE SHOP</h1>
         </div>
     </header> <br>
@@ -40,8 +44,9 @@
     <div class="universal-section">
 
         <div>
-            <p>Drink Creation Contest</p>
+            
             <img src="images/CoffeShop.png" alt="Interior of the Bean Boutique coffee shop">
+            <p>Drink Creation Contest</p>
         </div>
 
 
@@ -79,34 +84,50 @@
     <hr>
 
 
-    <table>
-        <tr>
-            <th scope="col">Event</th>
-            <th scope="col">Date</th>
-            <th scope="col">Location</th>
-        </tr>
-        <tr>
-            <td>Festival</td>
-            <td>Oct 15, 2026</td>
-            <td>Main Square</td>
-        </tr>
-        <tr>
-            <td>Workshop</td>
-            <td>Nov 10, 2026</td>
-            <td>Coffee Shop</td>
-        </tr>
-        <tr>
-            <td>Catering</td>
-            <td>Dec 5, 2026</td>
-            <td>Private Event</td>
-        </tr>
-    </table>
+    <div class="table-wrap">
+        <table>
+            <tr>
+                <th scope="col">Event</th>
+                <th scope="col">Date</th>
+                <th scope="col">Location</th>
+            </tr>
+            <tr>
+                <td>Festival</td>
+                <td>Oct 15, 2026</td>
+                <td>Main Square</td>
+            </tr>
+            <tr>
+                <td>Workshop</td>
+                <td>Nov 10, 2026</td>
+                <td>Coffee Shop</td>
+            </tr>
+            <tr>
+                <td>Catering</td>
+                <td>Dec 5, 2026</td>
+                <td>Private Event</td>
+            </tr>
+        </table>
+        </div>
+
+    <section class="event-map" aria-labelledby="event-map-title">
+        <h2 id="event-map-title">Find us in Lilongwe</h2>
+        <p>Map search for Main Square, Lilongwe, Malawi.</p>
+        <div class="event-map-frame">
+            <iframe
+                title="Google Map showing Main Square in Lilongwe, Malawi"
+                src="https://www.google.com/maps/place/Nacit+Lilongwe/@-13.9765356,33.7683125,17.17z/data=!4m9!1m2!2m1!1sMain+Square,+Lilongwe,+Malawi!3m5!1s0x1921d319b62569e3:0x7c3d256d72a9cb3c!8m2!3d-13.9746013!4d33.7708714!16s%2Fg%2F11c52b7nmx?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
 
     <hr>
 
     <!--    Subscription form-->
 
-    <form action="https://www.example.com/submit" method="post">
+    <form class="event-booking-form" action="https://www.example.com/submit" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
@@ -120,6 +141,15 @@
             <option value="catering">Catering</option>
         </select>
         <hr><br>
+
+        <div class="recaptcha-container">
+            <p class="recaptcha-note" id="recaptcha-note">
+                Development test key only. For live bookings, use your own key and verify the response on your server.
+            </p>
+            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                aria-describedby="recaptcha-note"></div>
+            <p class="recaptcha-error" role="alert" aria-live="polite"></p>
+        </div>
 
         <input type="submit" value="Submit">
     </form>

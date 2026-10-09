@@ -1,4 +1,54 @@
 function initPopup() {
+  // Hamburger menu toggle
+  const hamburger = document.querySelector(".hamburger");
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      const nav = hamburger.closest(".container, .universal-container")?.querySelector("nav");
+      if (!nav) return;
+      const isOpen = nav.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", String(isOpen));
+      hamburger.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Toggle navigation menu");
+    });
+
+    // Close the menu when a link is clicked
+    document.querySelectorAll("nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        const nav = hamburger.closest(".container, .universal-container")?.querySelector("nav");
+        nav?.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Toggle navigation menu");
+      });
+    });
+
+    // Close the menu with Escape
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        const nav = hamburger.closest(".container, .universal-container")?.querySelector("nav");
+        nav?.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Toggle navigation menu");
+      }
+    });
+  }
+
+  const eventForm = document.querySelector(".event-booking-form");
+  if (eventForm) {
+    const captcha = eventForm.querySelector(".g-recaptcha");
+    const captchaError = eventForm.querySelector(".recaptcha-error");
+
+    eventForm.addEventListener("submit", (event) => {
+      const response = eventForm.querySelector('[name="g-recaptcha-response"]');
+      event.preventDefault();
+      captchaError.classList.toggle("is-success", Boolean(response?.value));
+      if (response?.value) {
+        captchaError.textContent = "Test response received. Verify this token on your server before processing event bookings.";
+      } else {
+        captchaError.textContent = "Please complete the reCAPTCHA verification before submitting.";
+        captcha?.focus();
+      }
+    });
+  }
+
   const popup = document.getElementById("popup");
   const closeBtn = document.querySelector(".close");
   const buttons = document.querySelectorAll(".subscribeBtn");
