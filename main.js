@@ -118,8 +118,9 @@ function initPopup() {
   }
 
   const cartToast = document.getElementById('cart-toast');
-  const showCartToast = () => {
+  const showCartToast = (message = "Added to cart") => {
     if (!cartToast) return;
+    cartToast.textContent = message;
     cartToast.classList.add('show');
     cartToast.style.display = 'block';
     cartToast.style.opacity = '1';
@@ -140,6 +141,45 @@ function initPopup() {
         showCartToast();
       }
     });
+  });
+
+  const cartItems = document.getElementById("cart-items");
+  document.querySelectorAll(".recommendation-card .add-to-cart-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".recommendation-card");
+      const name = card?.dataset.name;
+      const priceText = card?.dataset.price;
+      if (!cartItems || !name || !priceText) return;
+
+      const price = Number(priceText.replace(/[^0-9.]/g, ""));
+      if (!Number.isFinite(price)) return;
+
+      const existingRow = Array.from(cartItems.rows).find(
+        (row) => row.cells[0]?.textContent.trim() === name
+      );
+      if (existingRow) {
+        const quantityCell = existingRow.cells[2];
+        const quantity = Number(quantityCell.textContent) + 1;
+        quantityCell.textContent = String(quantity);
+        existingRow.cells[3].textContent = `$${(price * quantity).toFixed(2)}`;
+      } else {
+        const row = cartItems.insertRow();
+        row.insertCell().textContent = name;
+        row.insertCell().textContent = `$${price.toFixed(2)}`;
+        row.insertCell().textContent = "1";
+        row.insertCell().textContent = `$${price.toFixed(2)}`;
+      }
+
+      showCartToast(`${name} added to your order`);
+    });
+  });
+
+  const checkoutButton = document.getElementById("checkout-button");
+  const checkoutStatus = document.getElementById("checkout-status");
+  checkoutButton?.addEventListener("click", () => {
+    if (checkoutStatus) {
+      checkoutStatus.textContent = "Online checkout is not set up yet. Your selected items are ready to review.";
+    }
   });
 }
 

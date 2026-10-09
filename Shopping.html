@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
     <title>BB COFFEE SHOP</title>
 </head>
 
@@ -17,11 +18,12 @@
                 <div class="universal-logo">
                     <img src="images/beanLogo.png" alt="Bean Boutique Logo">
                 </div>
-                <nav>
+                <nav aria-label="Main navigation">
                     <a href="Home.html">Home</a>
                     <a href="BrewingEquipment.html">Equipments</a>
-                    <a href="Events&Workshop.html">Events</a>
                     <a href="CoffeeSelection.html">Selection</a>
+                    <a href="Events&Workshop.html">Events</a>
+                    <a href="Shopping.html" aria-current="page">Shopping</a>
                     <a href="Offers.html">Offers</a>
                 </nav>
                 <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -32,107 +34,104 @@
             </div>
             <h1>BEAN BOUTIQUE <br>COFFEE SHOP</h1>
         </div>
-    </header> <br>
+    </header>
 
     <main id="main-content">
-        <!-- Shopping Cart Section table -->
-
-        <section>
-            <h2>Your Selection</h2>
-
+        <section class="shopping-summary" aria-labelledby="shopping-summary-title">
+            <div class="shopping-summary-heading">
+                <div>
+                    <p class="eyebrow">Your basket</p>
+                    <h2 id="shopping-summary-title">Order summary</h2>
+                </div>
+                <button class="checkout-button" id="checkout-button" type="button">Proceed to checkout</button>
+            </div>
             <div class="table-wrap">
-            <table>
-                <tr>
-                    <th scope="col">Item</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                </tr>
-
-                <tr>
-                    <td>Peeps Coffee</td>
-                    <td>$10.00</td>
-                    <td>1</td>
-                    <td>$10.00</td>
-                </tr>
-
-                <tr>
-                    <td>Soft Beans</td>
-                    <td>$12.00</td>
-                    <td>2</td>
-                    <td>$24.00</td>
-                </tr>
-
-                <tr>
-                    <td>Natural Beans</td>
-                    <td>$15.00</td>
-                    <td>1</td>
-                    <td>$15.00</td>
-                </tr>
-
-
-                <tr>
-                    <td>Moca Pot</td>
-                    <td>Mk120.00</td>
-                    <td>1</td>
-                    <td>Mk120.00</td>
-                </tr>
-
-            </table>
+                <table class="shopping-cart">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        <tr>
+                            <td>Peeps Coffee</td>
+                            <td>$10.00</td>
+                            <td>1</td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                            <td>Soft Beans</td>
+                            <td>$12.00</td>
+                            <td>2</td>
+                            <td>$24.00</td>
+                        </tr>
+                        <tr>
+                            <td>Natural Beans</td>
+                            <td>$15.00</td>
+                            <td>1</td>
+                            <td>$15.00</td>
+                        </tr>
+                        <tr>
+                            <td>Moca Pot</td>
+                            <td>Mk120.00</td>
+                            <td>1</td>
+                            <td>Mk120.00</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <p class="checkout-status" id="checkout-status" aria-live="polite"></p>
         </section>
 
-        <button class="subscribeBtn">Proceed to Checkout</button>
-
-
-
-
-        <!-- Shopping Cart Section content includes images and description-->
-
-        <section class="universal-section">
-
-
-            <div>
-
-                <img src="images/PeepsCoffee.png" alt="Peeps Coffee product">
-                <h2>Peeps Coffee</h2>
-                <button>Remove from Cart</button>
+        <section class="shopping-recommendations" aria-labelledby="recommendations-title">
+            <div class="shopping-section-heading">
+                <div>
+                    <p class="eyebrow">A little something extra</p>
+                    <h2 id="recommendations-title">You may also like</h2>
+                </div>
+                <p>Find another favorite to add to your basket.</p>
             </div>
-
-
-            <div>
-
-                <img src="images/SoftBEans.png" alt="Soft coffee beans">
-                <h2>Soft Beans</h2>
-                <button>Remove from Cart</button>
+            <div class="recommendation-grid">
+                <article class="recommendation-card" data-name="Roasted Beans" data-price="$14.00">
+                    <img src="images/RoastedCoffeBean.png" alt="Freshly roasted coffee beans">
+                    <div class="recommendation-details">
+                        <h3>Roasted Beans</h3>
+                        <p>Rich, freshly roasted beans for your next brew.</p>
+                        <div class="recommendation-action">
+                            <span>$14.00</span>
+                            <button class="add-to-cart-button" type="button">Add to cart</button>
+                        </div>
+                    </div>
+                </article>
+                <article class="recommendation-card" data-name="Peeps Coffee" data-price="$10.00">
+                    <img src="images/PeepsCoffee.png" alt="Peeps Coffee">
+                    <div class="recommendation-details">
+                        <h3>Peeps Coffee</h3>
+                        <p>A smooth everyday coffee, ready for your cup.</p>
+                        <div class="recommendation-action">
+                            <span>$10.00</span>
+                            <button class="add-to-cart-button" type="button">Add to cart</button>
+                        </div>
+                    </div>
+                </article>
+                <article class="recommendation-card" data-name="Natural Beans" data-price="$15.00">
+                    <img src="images/NaturalBeans.png" alt="Natural coffee beans">
+                    <div class="recommendation-details">
+                        <h3>Natural Beans</h3>
+                        <p>Carefully selected beans with a naturally bright flavor.</p>
+                        <div class="recommendation-action">
+                            <span>$15.00</span>
+                            <button class="add-to-cart-button" type="button">Add to cart</button>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
-
-        <section class="universal-section">
-
-            <div>
-
-                <img src="images/NaturalBeans.png" alt="Natural coffee beans">
-                <h2>Natural Beans</h2>
-                <button>Remove from Cart</button>
-            </div>
-
-
-
-
-            <div>
-
-                <img src="images/RoastedCoffeBean.png" alt="Roasted coffee beans">
-                <h2>Roasted Beans</h2>
-                <button>Remove from Cart</button>
-            </div>
-        </section>
-
-
-
-
-
     </main>
+    <div id="cart-toast" class="cart-toast" role="status" aria-live="polite" aria-atomic="true">Added to cart</div>
 
     <footer>
         <div class="footer-section">

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,10 +19,11 @@
                 <div class="universal-logo">
                     <img src="images/beanLogo.png" alt="Bean Boutique Logo">
                 </div>
-                <nav>
+                <nav aria-label="Main navigation">
                     <a href="Home.html">Home</a>
                     <a href="BrewingEquipment.html">Equipments</a>
                     <a href="CoffeeSelection.html">Selection</a>
+                    <a href="Events&Workshop.html" aria-current="page">Events</a>
                     <a href="Shopping.html">Shopping</a>
                     <a href="Offers.html">Offers</a>
                 </nav>
@@ -39,121 +39,119 @@
 
 
     <main id="main-content">
-    <section class="universal-intro">
-        <h2>Festivals & Championships</h2>
-    </section>
-    <div class="universal-section">
+        <section class="universal-intro">
+            <h2>Festivals & Championships</h2>
+        </section>
+        <div class="universal-section">
 
-        <div>
-            
-            <img src="images/CoffeShop.png" alt="Interior of the Bean Boutique coffee shop">
-            <p>Drink Creation Contest</p>
+            <div>
+
+                <img src="images/CoffeShop.png" alt="Interior of the Bean Boutique coffee shop">
+                <p>Drink Creation Contest</p>
+            </div>
+
+
+            <div>
+                <img src="images/Coffee1Shop.png" alt="Barista preparing coffee">
+                <p>Weekend Morning Collab Pop-Ups</p>
+            </div>
+
+            <div>
+                <img src="images/Shop3.png" alt="Coffee equipment displayed on a shop counter">
+                <p>Quiet Hour Focus Sessions</p>
+            </div>
+
         </div>
 
+        <section class="universal-intro">
+            <h2>Creative Catering & Mobile Baristas</h2>
+        </section>
+        <div class="universal-section">
 
-        <div>
-            <img src="images/Coffee1Shop.png" alt="Barista preparing coffee">
-            <p>Weekend Morning Collab Pop-Ups</p>
+            <div>
+                <p>Espresso Machine Demos</p>
+                <img src="images/barista.png" alt="Barista preparing espresso drinks">
+                <p>Don't miss out on our upcoming events!</p>
+            </div>
+
+
+
+            <div>
+                <p>Loyalty-Based Art</p>
+                <img src="images/mobile.png" alt="Mobile coffee service at an event">
+                <p>Don't miss out on our upcoming events!</p>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Location</th>
+                </tr>
+                <tr>
+                    <td>Festival</td>
+                    <td>Oct 15, 2026</td>
+                    <td>Main Square</td>
+                </tr>
+                <tr>
+                    <td>Workshop</td>
+                    <td>Nov 10, 2026</td>
+                    <td>Coffee Shop</td>
+                </tr>
+                <tr>
+                    <td>Catering</td>
+                    <td>Dec 5, 2026</td>
+                    <td>Private Event</td>
+                </tr>
+            </table>
         </div>
 
-        <div>
-            <img src="images/Shop3.png" alt="Coffee equipment displayed on a shop counter">
-            <p>Quiet Hour Focus Sessions</p>
-        </div>
+        <section class="event-map" aria-labelledby="event-map-title">
+            <h2 id="event-map-title">Find us in Lilongwe</h2>
+            <p>Map search for Main Square, Lilongwe, Malawi.</p>
+            <div class="event-map-frame">
+                <iframe title="Google Map showing Main Square in Lilongwe, Malawi"
+                    src="https://www.google.com/maps/place/Nacit+Lilongwe/@-13.9765356,33.7683125,17.17z/data=!4m9!1m2!2m1!1sMain+Square,+Lilongwe,+Malawi!3m5!1s0x1921d319b62569e3:0x7c3d256d72a9cb3c!8m2!3d-13.9746013!4d33.7708714!16s%2Fg%2F11c52b7nmx?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+                </iframe>
+            </div>
+        </section>
 
-    </div>
+        <hr>
 
-    <section class="universal-intro">
-        <h2>Creative Catering & Mobile Baristas</h2>
-    </section>
-    <div class="universal-section">
+        <!--    Subscription form-->
 
-        <div>
-            <p>Espresso Machine Demos</p>
-            <img src="images/barista.png" alt="Barista preparing espresso drinks">
-            <p>Don't miss out on our upcoming events!</p>
-        </div>
+        <form class="event-booking-form" action="https://www.example.com/submit" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
 
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
 
+            <label for="event">Event:</label>
+            <select id="event" name="event">
+                <option value="festival">Festival</option>
+                <option value="workshop">Workshop</option>
+                <option value="catering">Catering</option>
+            </select>
+            <hr><br>
 
-        <div>
-            <p>Loyalty-Based Art</p>
-            <img src="images/mobile.png" alt="Mobile coffee service at an event">
-            <p>Don't miss out on our upcoming events!</p>
-        </div>
-    </div>
-    <hr>
+            <div class="recaptcha-container">
+                <p class="recaptcha-note" id="recaptcha-note">
+                    Development test key only. For live bookings, use your own key and verify the response on your
+                    server.
+                </p>
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    aria-describedby="recaptcha-note"></div>
+                <p class="recaptcha-error" role="alert" aria-live="polite"></p>
+            </div>
 
-
-    <div class="table-wrap">
-        <table>
-            <tr>
-                <th scope="col">Event</th>
-                <th scope="col">Date</th>
-                <th scope="col">Location</th>
-            </tr>
-            <tr>
-                <td>Festival</td>
-                <td>Oct 15, 2026</td>
-                <td>Main Square</td>
-            </tr>
-            <tr>
-                <td>Workshop</td>
-                <td>Nov 10, 2026</td>
-                <td>Coffee Shop</td>
-            </tr>
-            <tr>
-                <td>Catering</td>
-                <td>Dec 5, 2026</td>
-                <td>Private Event</td>
-            </tr>
-        </table>
-        </div>
-
-    <section class="event-map" aria-labelledby="event-map-title">
-        <h2 id="event-map-title">Find us in Lilongwe</h2>
-        <p>Map search for Main Square, Lilongwe, Malawi.</p>
-        <div class="event-map-frame">
-            <iframe
-                title="Google Map showing Main Square in Lilongwe, Malawi"
-                src="https://www.google.com/maps/place/Nacit+Lilongwe/@-13.9765356,33.7683125,17.17z/data=!4m9!1m2!2m1!1sMain+Square,+Lilongwe,+Malawi!3m5!1s0x1921d319b62569e3:0x7c3d256d72a9cb3c!8m2!3d-13.9746013!4d33.7708714!16s%2Fg%2F11c52b7nmx?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </section>
-
-    <hr>
-
-    <!--    Subscription form-->
-
-    <form class="event-booking-form" action="https://www.example.com/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="event">Event:</label>
-        <select id="event" name="event">
-            <option value="festival">Festival</option>
-            <option value="workshop">Workshop</option>
-            <option value="catering">Catering</option>
-        </select>
-        <hr><br>
-
-        <div class="recaptcha-container">
-            <p class="recaptcha-note" id="recaptcha-note">
-                Development test key only. For live bookings, use your own key and verify the response on your server.
-            </p>
-            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                aria-describedby="recaptcha-note"></div>
-            <p class="recaptcha-error" role="alert" aria-live="polite"></p>
-        </div>
-
-        <input type="submit" value="Submit">
-    </form>
+            <input type="submit" value="Submit">
+        </form>
 
     </main>
 
@@ -186,164 +184,4 @@
     </footer>
 </body>
 
-=======
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>BB COFFEE SHOP</title>
-</head>
-
-<body class="events-page">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header id="universal-box">
-
-        <div class="universal-container">
-
-
-            <div class="universal-logo">
-                <img src="images/beanLogo.png" alt="Bean Boutique Logo">
-
-            </div>
-
-            <nav>
-                <a href="Home.html">Home</a>                
-                <a href="BrewingEquipment.html">Equipments</a>
-                <a href="CoffeeSelection.html">Selection</a>
-                <a href="Shopping.html">Shopping</a>
-                <a href="Offers.html">Offers</a>
-            </nav>
-
-            <h1>BEAN BOUTIQUE <br>COFFEE SHOP</h1>
-        </div>
-    </header> <br>
-
-
-    <main id="main-content">
-    <section class="universal-intro">
-        <h2>Festivals & Championships</h2>
-    </section>
-    <div class="universal-section">
-
-        <div>
-            
-            <img src="images/CoffeShop.png" alt="Interior of the Bean Boutique coffee shop">
-            <p>Drink Creation Contest</p>
-        </div>
-
-
-        <div>
-            <img src="images/Coffee1Shop.png" alt="Barista preparing coffee">
-            <p>Weekend Morning Collab Pop-Ups</p>
-        </div>
-
-        <div>
-            <img src="images/Shop3.png" alt="Coffee equipment displayed on a shop counter">
-            <p>Quiet Hour Focus Sessions</p>
-        </div>
-
-    </div>
-
-    <section class="universal-intro">
-        <h2>Creative Catering & Mobile Baristas</h2>
-    </section>
-    <div class="universal-section">
-
-        <div>
-            <p>Espresso Machine Demos</p>
-            <img src="images/barista.png" alt="Barista preparing espresso drinks">
-            <p>Don't miss out on our upcoming events!</p>
-        </div>
-
-
-
-        <div>
-            <p>Loyalty-Based Art</p>
-            <img src="images/mobile.png" alt="Mobile coffee service at an event">
-            <p>Don't miss out on our upcoming events!</p>
-        </div>
-    </div>
-    <hr>
-
-
-    <table>
-        <tr>
-            <th scope="col">Event</th>
-            <th scope="col">Date</th>
-            <th scope="col">Location</th>
-        </tr>
-        <tr>
-            <td>Festival</td>
-            <td>Oct 15, 2026</td>
-            <td>Main Square</td>
-        </tr>
-        <tr>
-            <td>Workshop</td>
-            <td>Nov 10, 2026</td>
-            <td>Coffee Shop</td>
-        </tr>
-        <tr>
-            <td>Catering</td>
-            <td>Dec 5, 2026</td>
-            <td>Private Event</td>
-        </tr>
-    </table>
-
-    <hr>
-
-    <!--    Subscription form-->
-
-    <form action="https://www.example.com/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="event">Event:</label>
-        <select id="event" name="event">
-            <option value="festival">Festival</option>
-            <option value="workshop">Workshop</option>
-            <option value="catering">Catering</option>
-        </select>
-        <hr><br>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    </main>
-
-
-
-    <hr>
-    <footer>
-        <div class="footer-section">
-
-            <div>
-                <a href="https://www.facebook.com">Facebook</a><br><br>
-                <a href="https://www.twitter.com">Twitter</a><br><br>
-                <a href="https://www.instagram.com">Instagram</a><br><br>
-                <a href="https://www.linkedin.com">LinkedIn</a><br><br>
-            </div>
-
-            <div>
-                <p><u>Opening times</u></p><br>
-                <p>Monday to Wednesday</p>
-                <p>8:00 am - 5:00 pm</p><br>
-                <p>Thursday and Friday</p>
-                <p>8:00 am - 7:00 pm</p><br>
-                <p>Saturday</p>
-                <p>10:00 am - 5:00 pm</p>
-            </div>
-        </div>
-        <p>&copy; 2026 Bean Boutique. All rights reserved.</p>
-
-
-    </footer>
-</body>
-
->>>>>>> ccbc6168309221880ddc7883380877488f130b2b
 </html>
