@@ -144,6 +144,79 @@ function initPopup() {
   });
 
   const cartItems = document.getElementById("cart-items");
+  const updateCartRow = (row, quantity) => {
+    const quantityValue = row.querySelector(".quantity-value");
+    const totalCell = row.cells[3];
+    const price = row.cells[1].textContent.trim().match(/^([^0-9]*)([\d,]+(?:\.\d+)?)(.*)$/);
+    if (!quantityValue || !totalCell || !price) {
+      console.error("Unable to update a cart item with invalid quantity or price data.");
+      return false;
+    }
+
+    const unitPrice = Number(price[2].replace(/,/g, ""));
+    if (!Number.isFinite(unitPrice)) {
+      console.error("Unable to update a cart item with an invalid price.");
+      return false;
+    }
+
+    quantityValue.textContent = String(quantity);
+    totalCell.textContent = `${price[1]}${(unitPrice * quantity).toFixed(2)}${price[3]}`;
+    return true;
+  };
+
+  const createQuantityControl = (name, quantity) => {
+    const control = document.createElement("div");
+    control.className = "quantity-control";
+
+    const decreaseButton = document.createElement("button");
+    decreaseButton.className = "quantity-button";
+    decreaseButton.type = "button";
+    decreaseButton.dataset.quantityAction = "decrease";
+    decreaseButton.setAttribute("aria-label", `Decrease ${name} quantity`);
+    decreaseButton.textContent = "−";
+
+    const quantityValue = document.createElement("span");
+    quantityValue.className = "quantity-value";
+    quantityValue.setAttribute("aria-live", "polite");
+    quantityValue.textContent = String(quantity);
+
+    const increaseButton = document.createElement("button");
+    increaseButton.className = "quantity-button";
+    increaseButton.type = "button";
+    increaseButton.dataset.quantityAction = "increase";
+    increaseButton.setAttribute("aria-label", `Increase ${name} quantity`);
+    increaseButton.textContent = "+";
+
+    control.append(decreaseButton, quantityValue, increaseButton);
+    return control;
+  };
+
+  cartItems?.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const button = event.target.closest("button[data-quantity-action]");
+    const row = button?.closest("tr");
+    if (!button || !row || !cartItems.contains(button)) return;
+
+    const quantity = Number(row.querySelector(".quantity-value")?.textContent);
+    if (!Number.isInteger(quantity) || quantity < 1) {
+      console.error("Unable to update a cart item with an invalid quantity.");
+      return;
+    }
+
+    const name = row.cells[0]?.textContent.trim() || "Item";
+    if (button.dataset.quantityAction === "decrease" && quantity === 1) {
+      row.remove();
+      showCartToast(`${name} removed from your order`);
+      return;
+    }
+
+    const newQuantity = quantity + (button.dataset.quantityAction === "increase" ? 1 : -1);
+    if (updateCartRow(row, newQuantity)) {
+      showCartToast(`${name} quantity updated`);
+    }
+  });
+
   document.querySelectorAll(".recommendation-card .add-to-cart-button").forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".recommendation-card");
@@ -158,15 +231,13 @@ function initPopup() {
         (row) => row.cells[0]?.textContent.trim() === name
       );
       if (existingRow) {
-        const quantityCell = existingRow.cells[2];
-        const quantity = Number(quantityCell.textContent) + 1;
-        quantityCell.textContent = String(quantity);
-        existingRow.cells[3].textContent = `$${(price * quantity).toFixed(2)}`;
+        const quantity = Number(existingRow.querySelector(".quantity-value")?.textContent) + 1;
+        updateCartRow(existingRow, quantity);
       } else {
         const row = cartItems.insertRow();
         row.insertCell().textContent = name;
         row.insertCell().textContent = `$${price.toFixed(2)}`;
-        row.insertCell().textContent = "1";
+        row.insertCell().append(createQuantityControl(name, 1));
         row.insertCell().textContent = `$${price.toFixed(2)}`;
       }
 
